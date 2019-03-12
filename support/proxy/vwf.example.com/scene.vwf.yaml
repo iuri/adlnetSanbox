@@ -1,0 +1,71 @@
+# Copyright 2012 United States Government, as represented by the Secretary of Defense, Under
+# Secretary of Defense (Personnel & Readiness).
+# 
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License. You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software distributed under the License
+# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied. See the License for the specific language governing permissions and limitations under
+# the License.
+
+--- 
+extends: http://vwf.example.com/node.vwf
+implements:
+- http://vwf.example.com/xapi.vwf
+properties:
+  activeCamera: 
+  fogNear:
+  fogFar:
+  fogType:
+  fogColor:
+  fogDensity:  
+  ambientColor: 
+  ___traceAPI: true
+  ___audioAPI: true
+  ___createAPI:
+    get: |
+          if(!this._createAPI)
+          {
+            Object.defineProperty(this,"_createAPI",{enumerable:false,writable:true});
+            this._createAPI = {};
+            var self = this;
+            this._createAPI.___createInternal = function(proto,cb)
+            {
+                 this.children.create(proto,GUID(),function(id){
+                 if(cb)
+                 {
+                     cb(vwf.models.javascript.nodes[id]);
+                 }
+                });
+            }
+            this._createAPI.primitives = {};
+            this._createAPI.primitives.sphere = function(radius,position,cb) {};
+            this._createAPI.primitives.box = function(width,height,length,position,cb) {};
+            this._createAPI.primitives.plane = function(width,length,position,cb) {};
+            this._createAPI.primitives.cone = function(radius,height,position,cb) {};
+            this._createAPI.primitives.cylinder = function(radius,height,position,cb) {};
+            this._createAPI.primitives.text = function(text,size,position,cb) {};
+            this._createAPI.primitives.torus = function(radius1,radius2,position,cb) {};
+            this._createAPI.meshes = {};
+            this._createAPI.meshes.fromURL = function(URL,position,cb) {};
+            this._createAPI.meshes.from3DRPID = function(URL,position,cb) {};
+            this._createAPI.lights = {};
+            this._createAPI.lights.point = function(color,brightness,position,cb) {};
+            this._createAPI.lights.directional = function(color,brightness,position,orientation,cb) {};
+            this._createAPI.lights.spot = function(color,brightness,position,orientation,cb) {};
+            this._createAPI.particles = {};
+            this._createAPI.particles.basic = function(cb) {};
+            this._createAPI.behaviors = {};
+            this._createAPI.modifiers = {};
+            this._createAPI.inventory = {};
+            this._createAPI.cameras = {};
+            this._createAPI.cameras.perspective = function(fov, position,cb) {};
+            this._createAPI.cameras.orthographic = function(width,length, position,cb) {};
+          }
+          return this._createAPI;      
+methods:
+  findNode:
+  findNodeByID:

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{root}}/vwf/view/editorview/css/colorpicker.css" /> 
+    <link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/bootstrap.min.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/style.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/alertify.core.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/alertify.default.css" />
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,400italic|Roboto+Condensed|Roboto|Open+Sans' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="{{root}}/js/jquery-1.10.2.min.js"></script>
+	<link rel="shortcut icon" href="/adl/sandbox/img/VWS_Logo.ico" />
+	{{{federal_analytics}}}
+	<style>
+		body{
+
+			overflow: hidden;
+			background : linear-gradient(#FFF,#CCC);
+			background-size: 2220px;
+			background-position-x: 0px;
+			opacity: 0;
+			font-family: 'Open Sans',sans-serif;
+		}
+		.ActionButtonsmalllabel
+		{
+			font-family: 'roboto condensed',sans-serif;
+		}
+
+		@media (max-width: 1920px){
+			
+			.bodypanel
+			{
+				width:800px;
+			}
+			.buttonContainer
+			{
+				width:33%;
+			}
+		}
+		@media (max-width: 800px){
+			
+			.bodypanel
+			{
+				width:100%;
+
+			}
+			.ActionButtonlabel
+			{
+				
+			}
+			.buttonContainer
+			{
+				width:100%;
+			}
+			#logo
+			{
+				zoom:.75;
+				
+			}
+		}
+		@media (max-width: 400px){
+			#logo
+			{
+				zoom:.5;
+				
+			}
+		}
+		@media (max-width: 270px){
+			#logo
+			{
+				zoom:.35;
+				
+			}
+		}
+		@media (max-width: 200px){
+			#logo
+			{
+				zoom:.35;
+				
+			}
+		}
+		.bodypanel
+		{
+			margin:auto;
+			
+		}
+		.buttonContainer
+		{
+			margin: 0px;
+			padding: 0px;
+			
+			display: inline-block;
+		}
+		.thinheaderlink
+		{
+			text-align: center;
+			margin: 1em 1em;
+			font-weight: bold;
+			color: #FFF;
+			text-shadow: 1px 1px 5px black;
+			
+		}
+		.ActionButton
+		{
+			float:left;
+			width:95%;
+		}
+		.thinheader
+		{
+			text-align: center;
+			
+		}
+
+	</style>
+	<script type="text/javascript">
+	
+
+function center()
+	{
+		var height = $('#content').height();
+				var wheight  = $(window).height();
+				$('#content').css('top',Math.max((wheight/2) - (height/2) ,0));
+				$('#content').css('position','relative');
+				
+				
+
+				$(window).resize(function(){
+
+				var height = $('#content').height();
+				var wheight  = $(window).height();
+				$('#content').css('top',Math.max((wheight/2) - (height/2) ,0));
+				$('#content').css('position','relative');
+
+				
+
+				});
+				$(window).resize();
+	}
+
+	$(document).ready(function(){
+
+		center();
+		$(document.body).css('opacity','1');
+		$(document.body).css('background-position-x','-300px');
+		$(document.body).css('transition','opacity 0.25s ease-in, background-position-x 30s');
+
+
+	})
+
+	</script>
+	<!--[if !IE 7]>
+	<style type="text/css">
+		#wrapper {display:table;height:100%}
+	</style>
+	<![endif]-->
+    <title>{{{branding.title}}}</title>
+
+	
+	
+
+
+</head>
+<body style="overflow:hidden">
+
+<div id='content' class='bodypanel'>
+<div id="logo" style="width:100%">
+						{{{branding.logo}}}
+					</div>
+
+		<div>			
+		<div class="" style="">
+		
+		
+		<div class="buttonContainer">
+		<a class="ActionButton" style="" href="{{root}}/features"><div class="ActionButtonlabel">Features</div><div class="ActionButtonsmalllabel">Learn about system capabilities</div></a>
+		</div>
+		<div class="buttonContainer">
+		<a class="ActionButton" style="" href="{{root}}/demos"><div class="ActionButtonlabel">Demos</div><div class="ActionButtonsmalllabel">See example content</div></a>
+		</div>
+		{{#sessionData}}
+		<div class="buttonContainer">
+		<a class="ActionButton" style="" href="./createNew2/noTemplate"><div class="ActionButtonlabel">Try it!</div><div class="ActionButtonsmalllabel">Build a world</div></a>
+		</div>
+		{{/sessionData}}
+		{{^sessionData}}
+		<div class="buttonContainer">
+		<a class="ActionButton" style="" href="./createNotLoggedIn"><div class="ActionButtonlabel">Try it!</div><div class="ActionButtonsmalllabel">Build a world</div></a>
+		</div>
+		{{/sessionData}}
+	</div>
+	</div>
+
+	<div class='thinheader'>
+		
+		
+		<a class='thinheaderlink' href='http://Sandboxdocs.readthedocs.org/en/latest/'>
+			{{#translate}}Docs{{/translate}}
+		</a>
+		
+
+		<a class='thinheaderlink' href='{{root}}/search'>
+			{{#translate}}Worlds{{/translate}} 
+		</a>
+		
+		
+		
+		<a class='thinheaderlink' href='{{root}}/about'>
+			{{#translate}}About{{/translate}}
+		</a>
+	<!--	<a class='thinheaderlink' href='{{root}}/featuredWorlds/0'>
+			{{#translate}}Worlds{{/translate}}
+		</a> -->
+		
+		{{^sessionData}}
+		<a id='logina' class='thinheaderlink' href='{{root}}/login'>
+			{{#translate}}Sign in{{/translate}}
+		</a>
+		{{/sessionData}}
+		{{#sessionData}}
+		<a id='logout' class='thinheaderlink' href='{{root}}/logout'>
+			{{#translate}}Log out{{/translate}}
+		</a>
+		{{/sessionData}}
+		{{#sessionData}}
+		<a class='thinheaderlink' href='{{root}}/user'>
+			{{sessionData.Username}}
+		</a>
+		{{/sessionData}}
+	</div>				
+
+	<div style='text-align:center;font-size:.75em;color:#999;margin-top:1em'>
+	{{{branding.tagline}}}
+	
+	</div>
+
+	<div style="margin-top: 2em;">
+	  <div style="font-size: 11px;
+margin: auto;
+font-weight: bold;
+color: darkgray;
+background: rgba(5,5,5,.05);
+margin-left: auto;
+width: 56%;
+border-radius: 12px;
+padding: 1em;
+border: 3px solid lightblue;">
+		<div>System Requirements</div>
+
+		<div><div style='display: inline-block;width: 50px;'>GPU</div><div  style='display: inline-block'>Intel HD 4000 or better</div></div>
+		<div><div  style='display: inline-block;width: 50px;'>RAM</div><div style='display: inline-block'>4 GB</div></div>
+		<div><div  style='display: inline-block;width: 50px;'>CPU</div><div style='display: inline-block'>Intel Core 2 Duo 2.4 GHz, AMD Athlon X2 2.8 GHz or better</div></div>
+
+	</div>
+	</div>
+</div>
+
+
+</body>
+</html>

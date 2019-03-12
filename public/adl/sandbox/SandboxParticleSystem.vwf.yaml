@@ -1,0 +1,256 @@
+# Copyright 2012 United States Government, as represented by the Secretary of Defense, Under
+# Secretary of Defense (Personnel & Readiness).
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License. You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under the License
+# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied. See the License for the specific language governing permissions and limitations under
+# the License.
+---
+extends: http://vwf.example.com/particlesystem.vwf
+methods:
+properties:
+  type: "ParticleSystem"
+  glyphURL: '../vwf/view/editorview/images/icons/ParticleIcon.png'
+  showGlyph: true
+  startColor_noAplha:
+    value: [1 ,1 ,1]
+    set: |
+            if(!this.startColor) this.startColor = [0,0,0,0];
+            if(!value) return;
+            this.startColor = [value[0],value[1],value[2],this.startAlpha]
+    get: |
+            if(!this.startColor)
+              return [1,1,1]
+            return [this.startColor[0],this.startColor[1],this.startColor[2]]
+  colorRange_noAplha:
+    value: [1 ,1 ,1]
+    set: |
+            if(!this.colorRange) this.colorRange = [0,0,0,0];
+            if(!value) return;
+            this.colorRange = [value[0],value[1],value[2],this.alphaRange]
+    get: |
+            if(!this.colorRange)
+              return [1,1,1]
+            return [this.colorRange[0],this.colorRange[1],this.colorRange[2]]
+  endColor_noAplha:
+    value: [1 ,1 ,1]
+    set: |
+            if(!this.endColor) this.endColor = [0,0,0,0];
+            if(!value) return;
+            this.endColor = [value[0],value[1],value[2],this.endAlpha]
+    get: |
+            if(!this.endColor)
+              return [1,1,1]
+            return [this.endColor[0],this.endColor[1],this.endColor[2]]
+  endAlpha:
+    value: 1
+    set: |
+            if(!this.endColor)
+            {
+              this.endColor = [1,1,1,value]  
+            }else
+              this.endColor = [this.endColor[0],this.endColor[1],this.endColor[2],value]
+    get: |
+            if(!this.endColor) return 1
+            return this.endColor[3];
+  startAlpha:
+    value: 1
+    set: |
+            if(!this.startColor)
+            {
+              this.startColor = [1,1,1,value]  
+            }
+            else
+            this.startColor = [this.startColor[0],this.startColor[1],this.startColor[2],value]
+    get: |
+            if(!this.startColor) return 1;
+            return this.startColor[3];
+  alphaRange:
+    value: 1
+    set: |
+            if(!this.colorRange) return [0,0,0,0];
+            this.colorRange = [this.colorRange[0],this.colorRange[1],this.colorRange[2],value]
+    get: |
+            if(!this.colorRange) return [0,0,0,0];
+            return this.colorRange[3];
+  EditorData:
+    AAParticleCount:
+      displayname: "Particle Count"
+      property: particleCount
+      type: slider
+      min: 200
+      max: 10000
+      step: 200
+    showGlyph:
+      displayname: Show glyph
+      property: showGlyph
+      type: check
+    ABstartAlphaEndRange:
+      displayname: "Alpha:  range"
+      property:  alphaRange
+      type: slider
+      min: 0
+      max: 1
+      step: .01
+    AALifeTime:
+      displayname: "Lifetime: (min - max)"
+      property: [minLifeTime, minLifeTime, maxLifeTime]
+      type: rangeslider
+      min: 1
+      max: 1000
+      step: 1
+    AABBBTextureTiles:
+      displayname: "Texture Tiles"
+      property: textureTiles
+      type: slider
+      min: 1
+      max: 4
+      step: 1
+    AABBBGravity:
+      displayname: "Gravity (Euler)"
+      property: gravity
+      type: slider
+      min: 0
+      max: 4
+      step: .01
+    AABBBDamping:
+      displayname: "Damping (Euler)"
+      property: damping
+      type: slider
+      min: 0
+      max: 1
+      step: .01
+    AAOrientation:
+      displayname: "Orientation: (min - max)"
+      property: [minOrientation, minOrientation, maxOrientation]
+      type: rangeslider
+      min: -30
+      max: 30
+      step: .1
+    AASpin:
+      displayname: "Spin: (min - max)"
+      property: [minSpin, minSpin, maxSpin]
+      type: rangeslider
+      min: -20
+      max: 20
+      step: .1
+    AStartSize:
+      displayname: "Size: start"
+      property: startSize
+      type: slider
+      min: 0
+      max: 1
+      step: .01
+    AStartSizeEnd:
+      displayname: "Size: end"
+      property: endSize
+      type: slider
+      min: 0
+      max: 1
+      step: .01
+    AStartSizeEndR:
+      displayname: "Size: range"
+      property: sizeRange
+      type: slider
+      min: 0
+      max: 1
+      step: .01
+    ABCMatx:
+      displayname: "Max Rate "
+      property: maxRate
+      type: slider
+      min: 0
+      max: 1
+      step: .001
+    ABCAlphaTest:
+      displayname: "Alpha Test (greater)"
+      property: alphaTest
+      type: slider
+      min: 0
+      max: 1
+      step: .001
+    CStartVelocity:
+      displayname: Velocity
+      property: [minVelocity, maxVelocity]
+      type: rangevector
+      step: .001
+    CStartAcceleration:
+      displayname: Acceleration
+      property: [minAcceleration, maxAcceleration]
+      type: rangevector
+      step: .001
+    CGravityPoint:
+      displayname: "Gravity Center"
+      property: gravityCenter
+      type: vector
+    ZZImage:
+      displayname: "Choose Image"
+      property: image
+      type: map
+    YStartColor:
+      displayname: Start Color
+      property: startColor
+      type: color
+    YEndColor:
+      displayname: End Color
+      property: endColor
+      type: color
+    YVariationColor:
+      displayname: Color Variation
+      property: colorRange
+      type: color
+    solver:
+      displayname: "Simulation Solver"
+      property: solver
+      type: choice
+      labels:
+        - Euler
+        - Analytic
+        - AnalyticShader
+      values:
+        - Euler
+        - Analytic
+        - AnalyticShader
+    emitterType:
+      displayname: "Emitter Type"
+      property: emitterType
+      type: choice
+      labels:
+        - Box
+        - Sphere
+        - Point
+      values:
+        - box
+        - sphere
+        - point
+    emitterSize:
+      displayname: Emitter Size
+      property: emitterSize
+      type: vector
+    emitterPosition:
+      displayname: Emitter Position
+      property: emitterPosition
+      type: vector
+    velocityMode:
+      displayname: "Velocity Mode"
+      property: velocityMode
+      type: choice
+      labels:
+        - Cartesian
+        - Spherical
+      values:
+        - cartesian
+        - spherical
+    DetphTest:
+      displayname: "Depth Test"
+      property: depthTest
+      type: check
+    Additive:
+      displayname: "Additive Blending"
+      property: additive
+      type: check

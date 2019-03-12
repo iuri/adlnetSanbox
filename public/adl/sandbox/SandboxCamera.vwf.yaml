@@ -1,0 +1,49 @@
+# Copyright 2012 United States Government, as represented by the Secretary of Defense, Under
+# Secretary of Defense (Personnel & Readiness).
+# 
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License. You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software distributed under the License
+# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied. See the License for the specific language governing permissions and limitations under
+# the License.
+---
+extends: http://vwf.example.com/node3.vwf
+methods:
+  activate:
+properties:
+  near: 1
+  far: 100
+  fov: 45
+  type: Camera
+  glyphURL: '../vwf/view/editorview/images/icons/cameraIcon.png'
+  showGlyph: true  
+  EditorData:
+    showGlyph:
+      displayname: Show glyph
+      property: showGlyph
+      type: check
+    near:
+      displayname: Near
+      property: near
+      type: slider
+      min: 0
+      max: 1000
+      step: .01
+    far:
+      displayname: Far
+      property: far
+      type: slider
+      min: 1
+      max: 50000
+      step: 1
+    fov:
+      displayname: Field Of View
+      property: fov
+      type: slider
+      min: 1
+      max: 90
+      step: 1

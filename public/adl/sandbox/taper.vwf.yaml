@@ -1,0 +1,28 @@
+extends: http://vwf.example.com/node3.vwf
+properties:
+  amount: 0
+  minAmount:
+  maxAmount:
+  isModifier: true
+  type:
+  EditorData:
+    amount:
+      displayname: taper amount
+      property: amount
+      type: slider
+      min: -1
+      max: 1
+      step: .01
+methods:
+  GetBounds:
+  updateStack:
+  updateSelf:
+  dirtyStack:
+  GetMesh:
+  taper:
+  uvmap:
+  bend:
+  twist:
+  ready:
+         
+        

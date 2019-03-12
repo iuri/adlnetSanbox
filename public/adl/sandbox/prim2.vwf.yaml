@@ -1,0 +1,43 @@
+# Copyright 2012 United States Government, as represented by the Secretary of Defense, Under
+# Secretary of Defense (Personnel & Readiness).
+# 
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License. You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software distributed under the License
+# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied. See the License for the specific language governing permissions and limitations under
+# the License.
+---
+extends: http://vwf.example.com/node3.vwf
+methods:
+  ___physics_addForceOffset:
+  ___physics_addForce:
+  ___physics_addTorque:
+  ___physics_addForceImpulse:
+  ___physics_addTorqueImpulse:
+events:
+  pointerOver:  
+  pointerOut:
+  pointerClick:  
+properties:
+  materialDef:
+  isSelectable: true
+  ___physicsAPI: true
+  ___physics_enabled: false
+  ___physics_mass: 1
+  ___physics_restitution: 0.1
+  ___physics_friction: 0.5
+  ___physics_damping: 0.05
+  ___physics_velocity_linear: [ 0, 0, 0]
+  ___physics_velocity_angular: [ 0, 0, 0]
+  ___physics_force_linear: [ 0, 0, 0]
+  ___physics_force_angular: [ 0, 0, 0]
+  ___physics_deactivation_time: 0
+  ___physics_activation_state: 1
+  ___physics_factor_angular: [ 1, 1, 1]
+  ___physics_factor_linear: [ 1, 1, 1]
+  ___physics_constant_force: null
+  ___physics_constant_torque: null

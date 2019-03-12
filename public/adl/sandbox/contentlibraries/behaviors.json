@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Rotator",
+		"url":"./contentlibraries/behaviors/vwf/rotator.vwf.json",
+		"preview":"./contentlibraries/behaviors/thumbs/rotate.jpg",
+		"type":"child"
+	},
+	{
+		"name": "Motor",
+		"url":"./contentlibraries/behaviors/vwf/motor.vwf.json",
+		"preview":"./contentlibraries/behaviors/thumbs/rotate.jpg",
+		"type":"child"
+	}
+]

@@ -1,0 +1,83 @@
+<html>
+<head>
+	<script src='../sandbox/polyfills.js'> </script>
+	<script src='../sandbox/vwf/view/editorview/lib/jquery-2.0.3.min.js'> </script>
+	<script src='../sandbox/vwf/view/editorview/lib/jquery-ui-1.10.3.custom.min.js'> </script>
+	<script src='./toggles.min.js'> </script>
+	<link rel='stylesheet' type="text/css" href='../sandbox/vwf/view/editorview/css/jquery-ui-1.10.3.custom.css'>
+	<link rel='stylesheet' type="text/css" href='./styles.css'>
+	<link rel='stylesheet' type="text/css" href='./toggles-full.css'>
+	<link rel='stylesheet' type="text/css" href='./toggles-iphone.css'>
+	<link rel='stylesheet' type="text/css" href='../sandbox/vwf/view/editorview/lib/alertify.js-0.3.9/themes/alertify.bootstrap.css'>
+	<link rel='stylesheet' type="text/css" href='../sandbox/vwf/view/editorview/lib/alertify.js-0.3.9/themes/alertify.core.css'>
+	<script src='../sandbox/require.js'> </script>
+	<script src='../sandbox/async.js'> </script>
+	
+
+	<script type="text/javaScript">
+	require(['./AAR.js'],function(AAR){
+
+			AAR.init();
+			window.AAR = AAR;
+	});	
+
+	</script>
+</head>
+<body>
+<div id='leftpane'> 
+	<div id='runningworldslabel' class='worldLabel'>
+	Currently Running Worlds 
+	</div>
+	<div id='runningworlds'> 
+	</div>
+	<div id='allworldslabel' class='worldLabel'> 
+	All Available Worlds
+	</div>
+	<div id='allworlds'> 
+	</div>
+</div> 
+<div id='rightpane'>
+	<div id='previewpane'> 
+	</div>
+	<div id='datapane'> 
+		<div id='tabs'>
+			<ul>
+    			<li><a href="#tabs1">Network Messages</a></li>
+    			<li><a href="#tabs2">Recorded Actions</a></li>
+    			<li><a href="#tabs3">Snapshots</a></li>
+    			<li><a href="#tabs4">Playback</a></li>
+  			</ul>
+  			<div id="tabs1">
+				<div id='datalist'></div>
+				
+			</div>
+			<div id="tabs2">
+				<div id='recordlist'></div>
+			</div>
+			<div id="tabs3">
+				<div id='snapshotlist'></div>
+			</div>
+			<div id="tabs4">
+				<div id='playhead'></div>
+				<canvas width=512 height=50 id='dataviz'></canvas>
+				<div id='playslider'></div>
+				<div id='timelinelabels'>
+				<div id='timelinestart'>0s</div>
+				<div id='timelineend'>100s</div>
+				</div>
+				<div id='playbutton'>Play</div>
+				<div id='pausebutton'>Pause</div>
+			</div>
+		</div>
+		<div id='datamenu'>
+					<div class="toggle toggle-light" style='width:100px;height:40px;display:inline-block;vertical-align:top' id="recordmode"></div>
+					Ticks:<div class="toggle toggle-light" style='width:100px;height:40px;display:inline-block;vertical-align:top' id="showticks"></div>
+					Inputs:<div class="toggle toggle-light" style='width:100px;height:40px;display:inline-block;vertical-align:top' id="showinput"></div>
+					<div class="button" id="exportdata">Export Data</div>
+					<div class="button" id="importdata">Import Data</div>
+					<div class="button" id="capturestate">Capture State</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

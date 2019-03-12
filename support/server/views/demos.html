@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{root}}/vwf/view/editorview/css/colorpicker.css" /> 
+    <link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/bootstrap.min.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/style.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/alertify.core.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="{{root}}/vwf/view/editorview/css/alertify.default.css" />
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,400italic|Roboto+Condensed|Roboto|Open+Sans' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="{{root}}/js/jquery-1.10.2.min.js"></script>
+	<link rel="shortcut icon" href="/adl/sandbox/img/VWS_Logo.ico" />
+	{{{federal_analytics}}}
+	<style>
+		body{
+			background: linear-gradient(#FFF,#CCC);
+			background-size: 2220px;
+			background-position-x: 0px;
+			opacity: 0;
+			font-family: 'Open Sans', sans-serif;
+			
+/* transition: opacity 1.5s ease-in, background-position-x 30s; */
+/* -webkit-transition: opacity 1.5s ease-in, background-position-x 30s; */
+/* background-position-x: -300px; */
+background-attachment: fixed;
+/* background: transparent url(./img/background.png) fixed; */
+height: initial;
+
+		}
+		.thinfooter
+		{
+			position:initial;
+		}
+		@media (max-width: 1920px){
+			
+			.bodypanel
+			{
+				width:1200px;
+			}
+			.buttonContainer
+			{
+				width:33%;
+			}
+			#logo1
+			{
+				zoom:1.00;
+				
+			}
+			.column
+			{
+				width: calc(33% - 40px);
+				margin: 20px;
+				display: inline-block;
+			}
+			.column .panel .section
+			{
+				margin: 0em 2em;
+			}
+		}
+		@media (max-width: 1200px){
+			
+			.bodypanel
+			{
+				width:1000px;
+			}
+			.buttonContainer
+			{
+				width:33%;
+			}
+			#logo1
+			{
+				zoom:1.00;
+				
+			}
+		}
+		@media (max-width: 1000px){
+			
+			#logo1
+			{
+				zoom:1;
+				
+			}
+			.bodypanel
+			{
+				width:100%;
+
+			}
+			.ActionButtonlabel
+			{
+				
+			}
+			.buttonContainer
+			{
+				width:100%;
+			}
+			.column
+			{
+				width: calc(33% - 10px);
+				margin: 5px;
+				display: inline-block;
+			}
+			.column .panel .section
+			{
+				margin: 0em .5em;
+			}
+		}
+		@media (max-width: 745px){
+			.column
+			{
+				display: block;
+				width: 90%;
+				margin-left: 5%;
+			}
+
+		}
+		@media (max-width: 400px){
+			#logo1
+			{
+				zoom:.5;
+				
+			}
+		}
+		@media (max-width: 270px){
+			#logo1
+			{
+				zoom:.35;
+				
+			}
+		}
+		@media (max-width: 200px){
+			#logo1
+			{
+				zoom:.35;
+				
+			}
+		}
+		.bodypanel
+		{
+			margin:auto;
+			
+		}
+		.buttonContainer
+		{
+			margin: 0px;
+			padding: 0px;
+			
+			display: inline-block;
+		}
+		.thinheaderlink
+		{
+			text-align: center;
+			margin: 1em 1em;
+			font-weight: bold;
+			color: #FFF;
+			text-shadow: 1px 1px 2px #555
+			
+		}
+		.ActionButton
+		{
+			
+			width:95%;
+		}
+		.thinheader
+		{
+			
+			
+		}
+		#logo1
+		{
+			width: 565px;
+			margin: 0em auto 1em auto;
+			padding-top: 1em;
+		}
+		#columns
+		{
+			width:100%;
+			
+
+		}
+		.column
+		{
+			
+			
+			
+			vertical-align: top;
+		}
+
+		.column .panel
+		{
+			background: white;
+			border-radius: 4px;
+			min-height: 200px;
+			box-shadow: 3px 3px 6px #ccc;
+			margin-bottom: 40px;
+			padding-bottom: 2em;
+			overflow: hidden;
+			border: none;
+		}
+		
+        .afterImg
+        {
+			display: inline-block;
+			width: calc(70% - 2em);
+			vertical-align: middle;
+        }
+		.column .panel .section .title
+		{
+			text-decoration: none;
+			font-weight: 800;
+			font-size: 15px;
+		}
+		.column .panel  .sectionlogo
+		{
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 2em;
+			width: calc(13% - 0em);
+
+		}
+		.column .panel .section .text
+		{
+			font-family: 'Roboto condensed';
+			color: gray;
+		}
+		#columns .paneltitle
+		{
+			text-align: CENTER;
+			border-bottom: 1px solid lightgray;
+			font-size: 1.4em;
+			text-transform: uppercase;
+			margin: 1em;
+			font-weight: bold;
+		}
+
+		#columns .featuretitle
+		{
+			background: rgb(61, 85, 158);
+			margin: -1px -6px;
+			padding: 0em;
+			color: white;
+			font-size: 2.5em;
+			text-transform: capitalize;
+		}
+		.bottomlink
+		{
+			background: #3D559E;
+			color: white;
+			font-weight: bold;
+			margin: 1em -1em -2em -1em;
+			padding: 1em;
+			text-align: center;
+			vertical-align: middle;
+			text-decoration: underline;
+			display: block;
+			cursor:pointer;
+		}
+		.bottomlink:hover
+		{
+			color: blue;
+		}
+		iframe {
+			width: 100%;
+			max-width:320px;
+		}
+		.panelheaderlogo
+		{
+			width: 50%;
+			margin: 1em 25% 0.5em 25%;
+		}
+		.panelheaderscreenshot
+		{
+			text-align: center;
+			
+			width:100%;
+		}
+		.panelheaderscreenshot img
+		{
+			width: calc(100% - 2em);
+		}
+		.moreinfolink
+		{
+			margin: 1em 3em;
+			font-family: 'Open Sans',sans-serif;
+			/* background: rgb(141, 188, 252); */
+			text-align: center;
+			border-radius: 5px;
+		}
+		.moreinfolink p
+		{
+			font-size: 0.75em;
+			color: lightgray;
+		}
+		.moreinfolink a
+		{
+			background: #98ADFF;
+			width: 100%;
+			font-weight: bold;
+			color: white;
+			margin: 0em 0em;
+			display: inline-block;
+			padding: .3em;
+			border-radius: 3px;
+			text-shadow: 1px 1px 1px black;
+		}
+		.panel .iframeholder
+		{
+			text-align: center;
+			margin: 1em;
+		}
+
+	</style>
+	<script type="text/javascript">
+	
+
+function center()
+	{
+		var height = $('#content').height();
+				var wheight  = $(window).height();
+				$('#content').css('top',Math.max((wheight/2) - (height/2) ,0));
+				$('#content').css('position','relative');
+				
+				
+
+				$(window).resize(function(){
+
+				var height = $('#content').height();
+				var wheight  = $(window).height();
+				$('#content').css('top',Math.max((wheight/2) - (height/2) ,0));
+				$('#content').css('position','relative');
+
+				
+
+				});
+				$(window).resize();
+	}
+	$(document).ready(function(){
+
+		center();
+		$(document.body).css('opacity','1');
+		$(document.body).css('background-position-x','-300px');
+		$(document.body).css('transition','opacity 0.25s ease-in, background-position-x 30s');
+
+
+	})
+
+	</script>
+	<!--[if !IE 7]>
+	<style type="text/css">
+		#wrapper {display:table;height:100%}
+	</style>
+	<![endif]-->
+    <title>Virtual World Sandbox - Virtual Worlds in your browser</title>
+
+	
+	
+
+
+</head>
+<body>
+<div id='content1' class='bodypanel'>
+	<div id="logo1">
+		<a href="/adl/sandbox">
+			<div style="display:inline">
+				<img src="/adl/sandbox/img/VWS_Logo.png">
+			</div>
+			<div style=" margin-left:10px;margin-top:50px;display:inline;">
+				<img src="/adl/sandbox/img/VW_text.png">
+				<img src="/adl/sandbox/img/Sandbox_text.png">
+			</div>
+		</a>
+	</div>
+	<div id="columns">
+		<div class='column column1'>
+			<div class='panel'>
+				<div class='paneltitle featuretitle'>Multi-User Demo</div>
+				<div class='iframeholder'>
+				<iframe width="320" height="240" src="//www.youtube.com/embed/zCWcxXsNCdc?rel=0" frameborder="0" allowfullscreen></iframe> </div>
+				<div class = 'section '>
+					<div class='text'> In this recorded demonstration, you'll see several users interacting to find and apprehend a suspect in a desert environment. The scene is set up for night, and each player has a light. The helicopter is equiped with a large searchlight that is tied to the direction of the thermal camera. The demo involves 4 users- one to fly, one manning the camera, and 2 on the ground. The suspect is an NPC controlled by simple scripts </div>
+				</div>
+				<div class = 'section'>
+					<div class='title'> Communication </div>
+					<div class='text'> While this video does not show it exactly, we have run this demo with 4 RTC connections to allow each user to communicate. In this recording, everyone was in the same room.</div>
+				</div>
+				<div class = 'section'>
+					<div class='title'> Interactivity </div>
+					<div class='text'> One of the great parts of this exercise is that it really works. The handheld lights are really not enough to search the area, and the suspect is quite hard to find without good communication from the thermal camera. Likewise, the pilot really cannot see the people below, and must work with the camera operator to aim the spot light. </div>
+				</div>
+				<div class="moreinfolink">
+					<a href='https://github.com/adlnet/Sandbox/'> Play the demo! </a>
+					<p> Currently Unavailable </p>
+				</div>
+			
+			</div>
+			
+		</div>
+		<div class='column  column2'>
+			<div class='panel'>
+				<div class='paneltitle'>Blank World</div>
+				<div class='panelheaderscreenshot'><img src='./img/blankworld.png' class=''></div>
+				<div class = 'section'>
+					<div class='text'> Use this if you just want to play around. We'll create for you a blank world where you can play around safely. Nothing you do here will be saved, and you won't need to login to try it.</div>
+				</div>
+				<div class="">
+					<a class="bottomlink" href='./example_blank/'>Try it out! </a>
+					
+				</div>
+			</div>
+			<div class='panel'>
+				<div class='paneltitle featuretitle'>Nutrition Mission</div>
+				<div class='iframeholder'>
+				<iframe width="320" height="180" src="//www.youtube.com/embed/9PsSPvc0qkk?rel=0" frameborder="0" allowfullscreen></iframe> </div>
+				<div class = 'section '>
+					<div class='text'> This recording shows a complex Sandbox based experience embedded within EdX course content. We even have some basic data transfer between the systems, so that EdX knows that the user completed the exercise successfully.   </div>
+				</div>
+				<div class = 'section'>
+					<div class='title'> Complex Gameplay </div>
+					<div class='text'> As with many complex applications, this "world" links to an external JavaScript file to handle much of the game dynamics.</div>
+				</div>
+				<div class = 'section'>
+					<div class='title'> Single Player </div>
+					<div class='text'> Because this world needs to be used by many players at once, and the game play is not designed as a multiplayer experience, the world is marked "single player" This means that when a user joins, a new world is created just for them, and is destroyed when they leave.</div>
+				</div>
+			</div>	
+			<!--<div class='panel'>
+				<div class='paneltitle'>Arcade Game</div>
+				<div class='panelheaderscreenshot'><img src='./img/arcade.png' class=''></div>
+				<div class = 'section'>
+					<div class='text'> This demo lets you build your own game level! You can drag and drop objects into the environment to prevent the player from reaching their goal.</div>
+				</div>
+				<div class = 'section'>
+					<div class='title'> Custom Editing </div>
+					<div class='text'> This world includes a custom GUI for the authoring portion. This GUI is simply loaded from the <code>ready</code> function of an object in the world.</div>
+				</div>
+				<div class = 'section'>
+					<div class='title'>eXperienceAPI Data tracking. </div>
+					<div class='text'> When this world is published, performance events will be tracked to the ADL Learning Record Store (LRS) using the XAPI.</div>
+				</div>
+				<div class = 'section'>
+					<div class='text'> This world is just for demonstration. If you would like to create your own copy to edit and save, <a>click here</a></div>
+				</div>
+				<div class="moreinfolink">
+					<a href='./example_arcade/'> Build A Level</a>
+					<p> Click above to launch a new single player world. </p>
+				</div>
+				<div class="">
+					<a class="bottomlink" href='./example_arcadedemo/'> Play the demo </a>
+				</div>
+			</div> -->
+			<!-- <div class='panel'>
+				<div class='paneltitle'>Sledding</div>
+				<div class='panelheaderscreenshot'><img src='./img/sledding.png' class=''></div>
+				<div class = 'section'>
+					<div class='text'></div>
+				</div>
+				<div class = 'section'>
+					<div class='title'> Complex Physics </div>
+					<div class='text'> Not only does this world use per-polygon collisions on an imported 3D asset file, it also has a complex controller to model the sled behavior.</div>
+				</div>
+				<div class="">
+					<a class="bottomlink" href='./example_sledgame/'> Go Sledding </a>
+					
+				</div>
+
+			</div> -->
+		</div>
+		<div class='column column3'>
+			<div class='panel'>
+				<div class='paneltitle'>All Examples</div>
+				<div class = 'section'>
+					<div class='text'> We also keep a long list of simple examples to demonstrate individual features and functions. These are not intended to be showcase quality items, but to simply list things the engine can do, and to serve as test cases.</div>
+				</div>
+				<a href="./examples">
+				<ul class='column column1'>
+					<li>Physics</li>
+					<li>Terrain</li>
+					<li>Assets</li>
+					<li>Sound</li>
+					<li>Scripting</li>
+					
+				</ul>
+				<ul class='column column2'>
+					<li>Objects</li>
+					<li>Particles</li>
+					<li>Materials</li>
+					<li>Lights</li>
+					<li>Behaviors</li>
+				</ul>
+				</a>
+				<a href="./examples" class="bottomlink">
+					See All Examples
+				</a>
+			</div>
+			<div class='panel'>
+				<div class='paneltitle featuretitle'>Physical Joints</div>
+				<div class='iframeholder'>
+				<iframe width="320" height="180" src="//www.youtube.com/embed/_K5MNdYjJoQ?rel=0" frameborder="0" allowfullscreen></iframe> </div>
+				<div class = 'section '>
+					<div class='text'> Here's a quick video showing how a joint object can effect the motion of objects in the world. </div>
+				</div>
+			</div>
+			<!-- <div class='panel'>
+				<div class='paneltitle'>Terrain</div>
+				<div class='panelheaderscreenshot'><img src='./img/terrain.png' class=''></div>
+				<div class = 'section'>
+					<div class='text'> A simple demo showing the terrain system. Left click and drag to steer.</div>
+				</div>
+				
+				<div class="moreinfolink">
+					<a href='http://sandboxdocs.readthedocs.org/en/latest/tutorials/working-with-terrain/'> Read the Terrain Tutorial </a>
+					<p> Learn how to import and texture terrains. </p>	
+				</div>
+				<div >
+					<a class="bottomlink" href='./example_terraingrassfly/'> Go Flying </a>	
+				</div>
+			</div> -->
+			<!-- <div class='panel'>
+				<div class='paneltitle featuretitle'>Data Recording</div>
+				<div class='iframeholder'>
+				<iframe width="320" height="180" src="//www.youtube.com/embed/HUTgepLWyig?rel=0" frameborder="0" allowfullscreen></iframe> </div>
+				<div class = 'section '>
+					<div class='text'> We have recently begun working to track, export, and play back data captured from a Sandbox environment. This video shows how we can attach to a running world and begin saving all the network traffic and changing simulation state.  </div>
+				</div>
+				<div class = 'section'>
+					<div class='title'> Beta Software! </div>
+					<div class='text'> This tool is very much beta software. It is currently working, but probably won't work as you expect, and needs some attention to user work flow.  Be warned!</div>
+				</div>
+				<div class="moreinfolink">
+					<a href='../dataview/dataview.html'> Launch the Data Recorder </a>	
+				</div>
+			</div>	-->
+		</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

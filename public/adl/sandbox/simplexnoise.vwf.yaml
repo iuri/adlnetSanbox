@@ -1,0 +1,90 @@
+extends: http://vwf.example.com/node3.vwf
+properties:
+  amount:
+    value: 0      
+  noisescale:
+    value: .1
+  iterations:
+    value: 2
+  phase:
+    value: 0         
+  seed:
+    value: 1
+  effectX:
+  ComputeNormals:            
+  effectY:
+  effectZ:          
+  translation:
+  rotation:
+  scale:
+  WorldSpace:           
+  minAmount:
+  maxAmount:
+  isModifier: true
+  type:
+  EditorData:
+    amount:
+      displayname: noise amount
+      property: amount
+      type: slider
+      min: 0
+      max: 5
+      step: .01
+    noisescale:
+      displayname: noise scale
+      property: noisescale
+      type: slider
+      min: 0
+      max: .3
+      step: .01
+    iterations:
+      displayname: iterations
+      property: iterations
+      type: slider
+      min: 2
+      max: 5
+      step: 1	  
+    seed:
+      displayname: random seed
+      property: seed
+      type: slider
+      min: 1
+      max: 512
+      step: 1
+    phase:
+      displayname: phase
+      property: phase
+      type: slider
+      min: 0
+      max: 1
+      step: .001  
+    effectX:
+      displayname: Effect X
+      property: effectX
+      type: check
+    effectY:
+      displayname: Effect Y
+      property: effectY
+      type: check 
+    effectZ:
+      displayname: Effect Z
+      property: effectZ
+      type: check
+    ComputeNormals:
+      displayname: Compute Normals
+      property: ComputeNormals
+      type: check  
+    WorldSpace:
+      displayname: Use World Positions
+      property: WorldSpace
+      type: check      
+methods:
+  GetBounds:
+  updateStack:
+  updateSelf:
+  dirtyStack:
+  GetMesh:
+  noise:
+  ready:
+events:
+  childAdded:

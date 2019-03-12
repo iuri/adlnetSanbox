@@ -1,0 +1,35 @@
+[
+	{
+		"name": "Demo Entities",
+        "url": "./contentlibraries/entities.json"
+    },
+	{
+		"name": "Materials",
+        "url": "./contentlibraries/materials.json"
+    },
+	{
+		"name": "Environments",
+        "url": "./contentlibraries/environments.json"
+    },
+	{
+		"name": "Behaviors",
+        "url": "./contentlibraries/behaviors.json"
+    },
+	{
+		"name": "Primitives",
+        "url": "./contentlibraries/primitives.json"
+    },
+	{
+		"name": "Cameras",
+        "url": "./contentlibraries/cameras.json"
+	},
+	{
+		"name": "Utilities",
+        "url": "./contentlibraries/utils.json"
+    },
+    {
+    	"name": "L-System generator",
+        "url": "./contentlibraries/lsystem.json"
+    }
+
+]

@@ -1,0 +1,37 @@
+extends: http://vwf.example.com/node3.vwf
+properties:
+  xamount: 0
+  yamount: 0
+  zamount: 0
+  isModifier: true
+  type:
+  EditorData:
+    xamount:
+      displayname: offset x
+      property: xamount
+      type: slider
+      min: -10
+      max: 10
+      step: .01
+    yamount:
+      displayname: offset y
+      property: yamount
+      type: slider
+      min: -10
+      max: 10
+      step: .01
+    zamount:
+      displayname: offset z
+      property: zamount
+      type: slider
+      min: -10
+      max: 10
+      step: .01      
+methods:
+  GetBounds:
+  updateStack:
+  updateSelf:
+  dirtyStack:
+  GetMesh:
+  offset:
+  ready:

@@ -1,0 +1,434 @@
+# Copyright 2012 United States Government, as represented by the Secretary of Defense, Under
+# Secretary of Defense (Personnel & Readiness).
+# 
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License. You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software distributed under the License
+# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied. See the License for the specific language governing permissions and limitations under
+# the License.
+
+--- 
+extends: http://vwf.example.com/navscene.vwf
+properties:
+  clients: 
+  DisplayName:
+  glyphURL: '../vwf/view/editorview/images/icons/scene.png'  
+  simTime: 0
+  placemarks:
+    Origin: [0, 0, 0]
+  navmode: none     
+  sunColor: 
+    value: [1, 1, 1]
+  sunDirection: 
+    value: [.5 , .5 , 1 ]
+  sunIntensity: 
+    value: .8
+  shadowDarkness:
+    value: .5
+  ambientColor: 
+    value: [.35, .35 , .35]
+  additionalUrlAsset: 'None'
+  additionalUrlAssetsList: ['None']
+  fogColor: [1, 1, 1]
+  fogNear: 100
+  fogFar: 1000
+  fogType: 0
+  fogDensity: .005
+  fogVFalloff: 1.3
+  fogVFalloffStart: 0
+  skyColorBlend: 1  
+  skyFogBlend: 0  
+  skyApexColor: [ 0.9 , 0.9 , 0.9 ]
+  skyHorizonColor: [ 0.8 , 0.8 , 0.8]
+  ___physics_gravity: [ 0, 0, -9.8]
+  ___physics_accuracy: 10
+  ___physics_active: true
+  vAtmosphereDensity: .0005
+  playMode: "paused"
+  octreeObjects: 5
+  octreeDepth: 16
+  octreeExtents: 640
+  owner:
+  type: scene
+  ___clientAPI: true
+  commsAPI:
+    get: |
+          var self = this;
+          if(this.___commsAPI) return this.___commsAPI;
+          this.___commsAPI = {};
+          this.___commsAPI.PM = function(from_client_id, to_client_id)
+          {
+            if(vwf.moniker() == from_client_id)
+            {
+               if(self.clients[to_client_id])
+               {
+                setupPmWindow(to_client_id)
+               }
+            }
+          }
+          this.___commsAPI.Chat = function()
+          {
+              $('#ChatWindow').dialog('open');
+          }
+          this.___commsAPI.VideoCall = function(from_client_id, to_client_id)
+          {
+            if(vwf.moniker() == from_client_id)
+            {
+               if(self.clients[to_client_id])
+               {
+                 vwf.callMethod(vwf.application(),'rtcVideoCall',{target:to_client_id});
+               }
+            }
+          }
+          this.___commsAPI.VoiceCall = function(from_client_id, to_client_id)
+          {
+            if(vwf.moniker() == from_client_id)
+            {
+               if(self.clients[to_client_id])
+               {
+                 vwf.callMethod(vwf.application(),'rtcCall',{target:to_client_id});
+               }
+            }
+          } 
+          return this.___commsAPI;         
+  EditorData:
+    additionalAssetsPreload:
+      displayname: 'Pre-Load Assets'
+      type: 'sectionTitle'
+    additionalUrlAasset:
+      displayname: Enter Asset Url
+      property: additionalUrlAsset
+      type: assetPreloaderText
+    additionalUrlAssetsList:
+      displayname: Select Assets
+      property: additionalUrlAssetsList
+      type: assetPreloaderChoice
+      labels:
+        - None
+      values:
+        - null
+    fog:
+      displayname: 'Fog'
+      type: 'sectionTitle'
+    fogNear:
+      displayname: Fog Near
+      property: fogNear
+      type: slider
+      min: 0
+      max: 2000
+      step: 1
+    fogFar:
+      displayname: Fog Far
+      property: fogFar
+      type: slider
+      min: 0
+      max: 2000
+      step: 1
+    fogDensity:
+      displayname: Fog Density
+      property: fogDensity
+      type: slider
+      min: 0
+      max: .1
+      step: .001
+    fogvFAlloff:
+      displayname: Fog Falloff
+      property: fogVFalloff
+      type: slider
+      min: .1
+      max: 10
+      step: .001 
+    fogvFAlloffStart:
+      displayname: Fog Falloff Start
+      property: fogVFalloffStart
+      type: slider
+      min: -100
+      max: 100
+      step: .1  
+    sunIntensity:
+      displayname: Sun Intensity
+      property: sunIntensity
+      type: slider
+      min: 0
+      max: 5
+      step: .1      
+    fogType:
+      displayname: Fog Type
+      property: fogType
+      type: choice
+      labels:         
+        - None
+        - Linear
+        - Quad
+      values:
+        - null
+        - linear
+        - exp  
+    fogColorR:
+      displayname: Fog Color
+      property: fogColor
+      type: color
+    sun:
+      displayname: 'Sun'
+      type: 'sectionTitle'  
+    sunambientColor:
+      displayname: ambient
+      property: ambientColor
+      type: color     
+    sunColor:
+      displayname: Sun Color
+      property: sunColor
+      type: color
+    sunRot:
+      displayname: Sun Direction
+      property: sunDirection
+      type: vector
+      step: .05
+    sunShadowDarkness:
+      displayname: Sun Shadow Density
+      property: shadowDarkness
+      type: slider
+      step: .05
+      min: 0
+      max: 2  
+    sky:
+      displayname: 'Sky'
+      type: 'sectionTitle'  
+    skyTexture:
+      displayname: skyTexture
+      property: skyTexture
+      type: choice
+      labels: 
+        - CloudyNoon
+        - Morning
+        - Evening
+        - Morning2
+        - ThunderStorm
+        - Night1
+        - Night2
+        - Bright
+        - White
+        - Black
+      values:
+        - cloudy_noon
+        - early_morning
+        - evening  
+        - morning  
+        - StormClouds   
+        - night1
+        - night2
+        - bright
+        - white
+        - black
+    skyColorBlend:  
+      displayname: Sky Color Blend
+      property: skyColorBlend
+      type: slider
+      min: 0
+      max: 1
+      step: .01  
+    skyFogBlend:
+      displayname: Sky Fog Amount
+      property: skyFogBlend
+      type: slider
+      min: 0
+      max: 1
+      step: .01  
+    skyAtmosphereDensity: 
+      displayname: Atmosphere Density
+      property: skyAtmosphereDensity
+      type: slider
+      min: 0
+      max: 1
+      step: .01     
+    skyApexColor:
+      displayname: Sky Apex Color
+      property: skyApexColor
+      type: color
+    skyHorizonColor: 
+      displayname: Sky Horizon Color
+      property: skyHorizonColor
+      type: color
+    zOctree:
+      displayname: 'Octree Accelerator'
+      type: 'sectionTitle'
+    zOctreeDepth:
+      displayname: 'Octree Max Depth'
+      property: octreeDepth
+      type: slider
+      min: 3
+      max: 24
+      step: 1
+    zOctreeExtents:
+      displayname: 'Octree Size (m)'
+      property: octreeExtents
+      type: slider
+      min: 10
+      max: 10000
+      step: 10
+    zOctreeObjects:
+      displayname: 'Max Objects per Octree Cell'
+      property: octreeObjects
+      type: slider
+      min: 3
+      max: 20
+      step: 1         
+events:
+  disconnected:
+  avatarCreated:
+  clientConnected:
+  clientDisconnected:
+  pointerOver:
+  pointerOut:
+  pointerClick:
+  pointerDown:
+  pointerUp:
+  pointerMove:
+  keyDown:
+  keyUp:
+  clientCameraChanged:
+methods:  
+  AmLocal:
+  newplayer:
+  deleteplayer:
+  initialize:
+  receiveChat:
+  CreatePlane:
+  PM:
+  latencyTest:
+  getSkyMat:
+  cameraBroadcastStart:
+  broadcastCameraPosition:
+  tick:
+  getBroadcasting:
+  cameraBroadcastEnd:
+  playSound:
+  setMusic:
+  ___physics_world_reset:
+  activteOculusBridge:
+  setClientCamera:
+  getGroundPlane:
+scripts:
+- |
+    this.initialize = function(){
+ 
+       
+       
+       
+
+         
+    }
+    this.tick = function()
+    {
+        if(this.receivingCameraBroadcast && this.cameramode != 'None')
+            this.receivingCameraBroadcast = false;
+        this.simTime = this.simTime +1;
+    }
+    
+    //the system is notifiying us that it has become disconnected from the server
+    this.disconnected = function()
+    {
+        //these really need to move out of here
+        alert('This client has been disconnected from server. The page must be reloaded.');
+        var user = _UserManager.GetCurrentUserID();
+        
+        try{vwf.deleteNode(user)} catch(e){};
+        document[document.PlayerNumber +'link'] = null;
+        document.PlayerNumber = null;
+        _UserManager.currentUsername = null;
+        window.onbeforeunload = null;
+        $(window).unbind();
+        window.location.reload();
+    }
+    //a new client has joined the simulation
+    this.avatarCreated = function(id)
+    {
+    
+    
+    }
+    //a new client has joined the simulation
+    this.clientConnected = function(id,name,UID)
+    {
+      
+    	
+     
+    }
+    // a client other than this one has left
+    this.clientDisconnected = function(id,name,UID)
+    {
+    
+    }
+    this.setClientCamera = function(id,cameraID)
+    {
+        if(this.clients[id])
+        this.clients[id].cameraID = cameraID;
+    }
+    
+
+     
+     
+      
+    
+    this.receiveChat = function(e)
+    {
+      //these really need to move out of here
+        if(window.ChatMessageReceived)
+          ChatMessageReceived(e);
+    }
+    this.PM = function(e)
+    {
+      //these really need to move out of here
+        if(window.PMReceived)
+        PMReceived(e);
+    }
+    function nodeExists(tempid)
+    {
+        for(var i in vwf.models.object.objects)
+            if (vwf.models.object.objects[i].properties.tempid == tempid) return true;
+        
+        return false;
+    }
+    
+   
+    
+    this.newplayer = function(e)
+    {
+        
+       
+        
+    }
+    
+   
+    
+    this.deinitialize = function()
+    {
+      
+    }
+    
+     
+
+
+    this.pointerOver = function(){return false;}
+    this.pointerOut= function(){return false;}
+    this.pointerClick= function(){return false;}
+    this.pointerDown= function(){return false;}
+    this.pointerUp= function(){return false;}
+    this.pointerMove= function(){return false;}
+
+    //this really belongs in the view 
+    this.activteOculusBridge = function()
+    {
+        this.oculusActive = true;
+    }
+        
+    
+    
+ 
+ 
+   
+
+   

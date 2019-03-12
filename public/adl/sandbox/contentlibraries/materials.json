@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Default Grey",
+		"url":"./contentlibraries/materials/vwf/white.json",
+		"preview":"./contentlibraries/materials/thumbs/white.jpg",
+		"type":"material"
+	},
+	{
+		"name": "Gold",
+		"url":"./contentlibraries/materials/vwf/gold.json",
+		"preview":"./contentlibraries/materials/thumbs/gold.jpg",
+		"type":"material"
+	},
+	{
+		"name": "Silver",
+		"url":"./contentlibraries/materials/vwf/silver.json",
+		"preview":"./contentlibraries/materials/thumbs/silver.jpg",
+		"type":"material"
+	},
+	{
+		"name": "Brick",
+		"url":"./contentlibraries/materials/vwf/brick.json",
+		"preview":"./contentlibraries/materials/thumbs/brick.jpg",
+		"type":"material"
+	}
+]

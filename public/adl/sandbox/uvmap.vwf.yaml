@@ -1,0 +1,16 @@
+# 
+---
+
+extends: http://vwf.example.com/node3.vwf
+properties:
+  _length: 1
+  width: 1
+  height: 1
+  mode: box
+  plane: z
+  tilex: 1
+  tiley: 1
+  rotate: 0
+  uoffset: 0
+  voffset: 0
+

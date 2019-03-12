@@ -1,0 +1,130 @@
+extends: http://vwf.example.com/node3.vwf
+properties:
+  
+  amount:
+    value: 0
+    set: |
+            this.amount = value;
+           
+            this.dirtyStack();          
+  noisescale:
+    value: .1
+    set: |
+            this.noisescale = value;
+            this.dirtyStack();
+  iterations:
+    value: 2
+    set: |
+            this.iterations = value;
+            this.dirtyStack();
+  phase:
+    value: 0
+    set: |
+            this.phase = value;
+            this.dirtyStack();          
+  seed:
+    value: 1
+    set: |
+            this.seed = value;
+            
+            this.rcrandom = this.Random(this.seed);
+         
+             this.permutation = [];
+             for(var i =0; i < 512; i++)
+             {
+                this.permutation.push(Math.floor(this.rcrandom.getRandomNumber()*256));
+             }         
+            
+            this.simplex = new SimplexNoise(this.rcrandom.getRandomNumber);
+            this.dirtyStack(); 
+  effectX:
+    set: |
+            this.effectX = value;
+            this.dirtyStack();
+  ComputeNormals:
+    set: |
+            this.ComputeNormals = value;
+            this.dirtyStack();             
+  effectY:
+    set: |
+            this.effectY = value;
+            this.dirtyStack(); 
+  effectZ:
+    set: |
+            this.effectZ = value;
+            this.dirtyStack();             
+  WorldSpace:
+    value: 0
+    set: |
+            this.WorldSpace = value;
+            this.dirtyStack();              
+  minAmount:
+  maxAmount:
+  isModifier: true
+  type:
+  EditorData:
+    amount:
+      displayname: noise amount
+      property: amount
+      type: slider
+      min: 0
+      max: 5
+      step: .01
+    noisescale:
+      displayname: noise scale
+      property: noisescale
+      type: slider
+      min: 0
+      max: .3
+      step: .01
+    iterations:
+      displayname: iterations
+      property: iterations
+      type: slider
+      min: 2
+      max: 5
+      step: 1	
+    seed:
+      displayname: random seed
+      property: seed
+      type: slider
+      min: 1
+      max: 512
+      step: 1
+    phase:
+      displayname: phase
+      property: phase
+      type: slider
+      min: 0
+      max: 1
+      step: .001  
+    effectX:
+      displayname: Effect X
+      property: effectX
+      type: check
+    effectY:
+      displayname: Effect Y
+      property: effectY
+      type: check 
+    effectZ:
+      displayname: Effect Z
+      property: effectZ
+      type: check
+    ComputeNormals:
+      displayname: Compute Normals
+      property: ComputeNormals
+      type: check  
+    WorldSpace:
+      displayname: Use World Positions
+      property: WorldSpace
+      type: check      
+methods:
+  GetBounds:
+  updateStack:
+  updateSelf:
+  dirtyStack:
+  GetMesh:
+  noise:
+  ready:
+events:
+  childAdded:

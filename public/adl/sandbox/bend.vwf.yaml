@@ -1,0 +1,55 @@
+extends: http://vwf.example.com/node3.vwf
+properties:
+  amount: 1
+  active: true
+  majoraxis: 0
+  minoraxis: 1
+  type:
+  isModifier: true
+  EditorData:
+    amount:
+      displayname: bend amount
+      property: amount
+      type: slider
+      min: -0.05
+      max: 0.05
+      step: 0.001
+    majoraxis:
+      displayname: major axis
+      property: majoraxis
+      type: choice
+      labels:
+        - X
+        - Y
+        - Z
+      values:
+        - 0
+        - 1
+        - 2
+    minoraxis:
+      displayname: minor axis
+      property: minoraxis
+      type: choice
+      labels:
+        - X
+        - Y
+        - Z
+      values:
+        - 0
+        - 1
+        - 2
+    active:
+      displayname: enabled
+      property: active
+      type: check
+methods:
+  GetBounds:
+  updateStack:
+  updateSelf:
+  dirtyStack:
+  GetMesh:
+  bend:
+events:
+  childAdded:
+scripts:
+

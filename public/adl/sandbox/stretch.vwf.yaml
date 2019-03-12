@@ -1,0 +1,47 @@
+extends: http://vwf.example.com/node3.vwf
+properties:
+  amount: 0
+  effectaxis: 1
+  stretch: 0
+  bulge: 0
+  minAmount:
+  maxAmount:
+  isModifier: true
+  type:
+  EditorData:
+    stretch:
+      displayname: stretch
+      property: stretch
+      type: slider
+      min: -10
+      max: 10
+      step: .01
+    bulge:
+      displayname: bulge
+      property: bulge
+      type: slider
+      min: -10
+      max: 10
+      step: .01
+    zeffectaxis:
+      displayname: effect axis
+      property: effectaxis
+      type: choice
+      labels: 
+        - X
+        - Y
+        - Z
+      values:
+        - 0
+        - 1
+        - 2    
+methods:
+  GetBounds:
+  updateStack:
+  updateSelf:
+  dirtyStack:
+  GetMesh:
+  dostretch:
+  ready:
+events:
+  childAdded:
